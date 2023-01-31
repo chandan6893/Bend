@@ -70,15 +70,36 @@
 
 
 
+// const express = require("express");
+// const app = express();
+
+// app.use("/home", (req, res, next) => {
+//   res.send("Home --> Welcome to facebook");
+  
+// });
+
+// app.use('/',(req,res,next)=>{
+//     res.send("Nothing")
+// });
+
+// app.listen(3000);
+
+
 const express = require("express");
 const app = express();
 
 app.use("/home", (req, res, next) => {
-  res.send("Home --> Welcome to facebook");
+  res.send(`<form action="/message" methyod="Post" >
+             <input type="text" name="mango" >
+             <button type="submit" >SEND</button>
+            </form>`);
 });
 
-app.use('/',(req,res,next)=>{
-    res.send("Nothing")
+app.use("/message", (req, res, next) => {
+  res.redirect("/home");
 });
 
+app.use("/",(req,res,next)=>{
+    console.log("hello Guys")
+})
 app.listen(3000);
