@@ -107,26 +107,39 @@
 
 
 
-const express = require("express");
-const bodyParser = require("body-parser");
+// const express = require("express");
+// const bodyParser = require("body-parser");
 
+// const app = express();
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+// app.use("/add-product", (req, res, next) => {
+//   res.send(
+//     "<form action='/product' method='POST'> <input type='text' name='title'> <button type='submit'>Send</button></form>"
+//   );
+// });
+
+// app.use("/product", (req, res) => {
+//   console.log(req.body);
+//   res.redirect("/");
+// });
+
+// app.use("/", (req, res) => {
+//   res.send("home");
+// });
+
+// app.listen(3000);
+
+
+
+const express = require('express');
+const bodyParser= require('body-parser');
+const productRoutes = require('./routes/product');
+// routes folder mein product file 
 const app = express();
+app.use(bodyParser.urlencoded({extended:false}));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use("/add-product", (req, res, next) => {
-  res.send(
-    "<form action='/product' method='POST'> <input type='text' name='title'> <button type='submit'>Send</button></form>"
-  );
-});
-
-app.use("/product", (req, res) => {
-  console.log(req.body);
-  res.redirect("/");
-});
-
-app.use("/", (req, res) => {
-  res.send("home");
-});
+app.use(productRoutes);
 
 app.listen(3000);
