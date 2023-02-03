@@ -142,4 +142,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(productRoutes);
 
+app.use((req,res,next) => {
+    res.redirect('/products');
+});
+
 app.listen(3000);
