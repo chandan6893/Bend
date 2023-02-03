@@ -140,6 +140,8 @@ const productRoutes = require('./routes/product');
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(express.static());
+
 app.use(productRoutes);
 
 app.use((req,res,next) => {
