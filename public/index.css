@@ -1,0 +1,9 @@
+header ul{
+   list-style: none;
+}
+header a{
+    text-decoration: none;
+}
+body{
+    background-color: aqua;
+}
