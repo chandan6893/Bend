@@ -135,11 +135,21 @@
 
 const express = require('express');
 const bodyParser= require('body-parser');
-const productRoutes = require('./routes/product');
+const productRoutes = require('./routes/product').router;
 // routes folder mein product file 
+const products = require("./routes/product").products;
 
 const path = require('path');
 const app = express();
+
+app.use((req,res,next)=>{
+    req.products=products;
+    next();
+});
+
+app.use('/test',(req,res,next)=>{
+    res.send(products)
+})
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname,'public')));

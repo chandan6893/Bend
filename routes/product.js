@@ -25,17 +25,26 @@ const path = require('path');
 
 const router = express.Router();
 
-router.use("/products", (req, res) => {
+const products=[];
+router.get("/products", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "views", "product.html"));
 });
 
-router.use("/add-product", (req, res,next) => {
+router.get("/add-product", (req, res,next) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
 });
 
-router.use("/product", (req, res) => {
+router.post("/add-product", (req, res,next) => {
+  products.push(req.body.title)
+  console.log(products);
+  res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
+});
+
+router.get("/product", (req, res) => {
   console.log(req.body);
   res.redirect("/");
 });
 
-module.exports = router;
+// module.exports = router;
+exports.router = router;
+exports.products = products;
