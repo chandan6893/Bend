@@ -143,14 +143,6 @@ const path = require('path');
 const app = express();
 app.set('view engine','ejs')
 
-app.use((req,res,next)=>{
-    req.products=products;
-    next();
-});
-
-app.use('/test',(req,res,next)=>{
-    res.send(products)
-})
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname,'public')));
