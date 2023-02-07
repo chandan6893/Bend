@@ -141,6 +141,7 @@ const products = require("./routes/product").products;
 
 const path = require('path');
 const app = express();
+app.set('view engine','ejs')
 
 app.use((req,res,next)=>{
     req.products=products;
