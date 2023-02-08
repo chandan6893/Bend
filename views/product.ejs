@@ -21,6 +21,19 @@
         
         </header>
     
-    Test This
+    <!-- Test This -->
+
+    <!-- <% for(let product of products) { %>
+        <h1> <%=product %> </h1>
+    <% } %> -->
+
+    <!-- Or -->
+<div class="products">
+     <% for(let i=0;i<products.length;i++) { %>
+     <div class="card">   
+        <h1> <%=products[i] %> </h1>
+     </div>  
+    <% } %>
+</div>
 </body>
 </html>

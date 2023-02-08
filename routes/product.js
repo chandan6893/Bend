@@ -27,7 +27,9 @@ const router = express.Router();
 
 const products=[];
 router.get("/products", (req, res,next) => {
-  res.render("product");
+  res.render("product",{
+    products:products,
+  });
 });
 
 router.get("/add-product", (req, res,next) => {
@@ -37,13 +39,13 @@ router.get("/add-product", (req, res,next) => {
 router.post("/add-product", (req, res,next) => {
   products.push(req.body.title)
   console.log(products);
-  res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
+  res.redirect('/product');
 });
 
-router.get("/product", (req, res) => {
-  console.log(req.body);
-  res.redirect("/");
-});
+// router.get("/product", (req, res) => {
+//   console.log(req.body);
+//   res.redirect("/");
+// });
 
 // module.exports = router;
 exports.router = router;
