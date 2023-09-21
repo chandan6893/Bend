@@ -1,1 +1,0 @@
-this is a simple apple.txt file in crud folder

@@ -1,3 +1,45 @@
+// code s bt step
+
+// const fs=require("fs");
+// fs.writeFileSync("apple.txt","This is apple file");
+
+
+
+// How to ctete multiple files in a loop
+
+const fs=require('fs');
+const path=require('path');
+const dirPath= path.join(__dirname,'files');
+// "files",is a folder in Backend directory.in which we will crete multiole files.
+for(let i=0;i<5;i++){
+    fs.writeFileSync(dirPath+"/hello"+i+".txt","a simple text file")
+}
+
+// how to read the files created in files folder
+
+fs.readdir(dirPath,(err,files)=>{
+    console.log(files);
+}) 
+// but it will give us the filesin an array
+// so to get the files without an array
+fs.readdir(dirPath,(err,files)=>{
+    files.forEach((item)=>{
+        console.log(item);
+    })
+})
+
+
+
+
+
+
+
+// AirCampus Bend
+
+
+
+
+
 // const express = require("express");
 // // eventHandler is given to us by expressJs
 // const app = express();
@@ -133,24 +175,25 @@
 
 
 
-const express = require('express');
-const bodyParser= require('body-parser');
-const productRoutes = require('./routes/product').router;
-// routes folder mein product file 
-const products = require("./routes/product").products;
+// const express = require('express');
+// const bodyParser= require('body-parser');
+// const productRoutes = require('./routes/product').router;
+// // routes folder mein product file 
+// const products = require("./routes/product").products;
 
-const path = require('path');
-const app = express();
-app.set('view engine','ejs')
+// const path = require('path');
+// const app = express();
+// app.set('view engine','ejs')
 
-app.use(bodyParser.urlencoded({extended:false}));
+// app.use(bodyParser.urlencoded({extended:false}));
 
-app.use(express.static(path.join(__dirname,'public')));
+// app.use(express.static(path.join(__dirname,'public')));
 
-app.use(productRoutes);
+// app.use(productRoutes);
 
-app.use((req,res,next) => {
-    res.redirect('/products');
-});
+// app.use((req,res,next) => {
+//     res.redirect('/products');
+// });
 
-app.listen(3000);
+// app.listen(3000);
+
