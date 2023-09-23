@@ -18,4 +18,13 @@ const deleteInDB=async ()=>{
     );
     console.log(data);
 }
-deleteInDB();
+// deleteInDB();
+
+const findInDb=async ()=>{
+    const Product=mongoose.model("products",productSchema);
+    let data=await Product.find(
+        // {name:"m 420"}
+    );
+    console.log(data);
+}
+findInDb();
