@@ -6,7 +6,8 @@ const Product=require("./product");
 const app=express();
 
 app.use(express.json());
-
+ 
+// SAVE records
 app.post("/create",async (req,res)=>{
     let data=new Product(req.body);
     let result=await data.save();
@@ -14,9 +15,11 @@ app.post("/create",async (req,res)=>{
     res.send(result);
 });
 
-// app.get('/list',async (req,res)=>{
-//     let data = await Product.find();
-//     res.send(data); 
-// });
+// GET API
+app.get("/list",async (req,res)=>{
+    let data = await Product.find();
+    // console.log(data);
+    res.send(data); 
+});
 
 app.listen(5000);
