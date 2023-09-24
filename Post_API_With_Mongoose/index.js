@@ -35,4 +35,12 @@ app.put("/update/:_id",async (req,res)=>{
     let data=await Product.updateOne(req.params,{$set:req.body})
     res.send(data);
 });
+
+app.get("/search/:key", async (req, res) => {
+  console.log(req.params.key);
+  let data = await Product.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  res.send(data);
+});
 app.listen(5000);
